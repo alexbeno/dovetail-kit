@@ -277,6 +277,20 @@
   background-repeat: no-repeat;
 }
 
+/*
+ * A cell's span must not leak into the cells of a grid nested inside it:
+ * these two never inherit. Left without an initial value on purpose, so the
+ * `var(--span, 1)` fallbacks in the recipes still apply.
+ */
+@property --span {
+  syntax: "*";
+  inherits: false;
+}
+@property --span-sm {
+  syntax: "*";
+  inherits: false;
+}
+
 @layer base {
   *,
   ::before,

@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build": "npm run build:html && npm run build:registry",
     "build:html": "tsx html/build.mjs",
@@ -17,7 +17,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build:site": "npm run build && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fontsource-variable/archivo": "^5.3.0",

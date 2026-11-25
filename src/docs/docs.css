@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "../styles/fonts.css";
+@import "../styles/dovetail.css";
+
+html {
+  scroll-behavior: smooth;
+  /* Anchors land below the sticky header strip. */
+  scroll-padding-top: 88px;
+}

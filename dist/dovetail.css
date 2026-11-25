@@ -1519,6 +1519,14 @@
   --dt-grid-minor: 12px;
   --dt-grid-major: 48px;
 }
+@property --span {
+  syntax: "*";
+  inherits: false;
+}
+@property --span-sm {
+  syntax: "*";
+  inherits: false;
+}
 @layer base {
   *, ::before, ::after, ::backdrop {
     border-color: var(--border);
@@ -5994,6 +6002,8 @@
       --tw-numeric-figure: initial;
       --tw-numeric-spacing: initial;
       --tw-numeric-fraction: initial;
+      --span: initial;
+      --span-sm: initial;
       --tw-duration: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;

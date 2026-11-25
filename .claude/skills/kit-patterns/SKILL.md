@@ -26,7 +26,8 @@ An example                                       → src/stories/<family>.storie
 3. **Story** in the matching file of `src/stories/`. Show each variant; no business scenario.
 4. **Registry**: add the item to `registry.json` (`registryDependencies: ["@dovetail/dovetail-core"]`, npm `dependencies`), then `npm run build:registry`.
 5. **HTML**: add the markup to `html/demo.html`, run `npm run build:html`, check `dist/classes.json` for the class names. If the component needs a behaviour, add it to `html/dovetail.js` with event delegation and a `data-*` hook, never an inline handler.
-6. `npm run lint && npm run typecheck && npm test`, then look at the story and at `html/demo.html` in both themes.
+6. **Showcase**: add a `Specimen` to the matching file of `src/docs/sections/`.
+7. `npm run lint && npm run typecheck && npm test`, then look at the story and at `html/demo.html` in both themes.
 
 ## Writing a recipe
 

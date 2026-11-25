@@ -81,6 +81,7 @@ const eslintConfig = defineConfig([
         { type: "ui", pattern: "src/components/ui" },
         { type: "lib", pattern: "src/lib" },
         { type: "stories", pattern: "src/stories" },
+        { type: "docs", pattern: "src/docs" },
       ],
     },
     rules: {
@@ -93,6 +94,11 @@ const eslintConfig = defineConfig([
               // Stories show the kit: they may import everything.
               from: { element: { type: "stories" } },
               allow: { to: { element: { types: ["ui", "lib", "stories"] } } },
+            },
+            {
+              // The showcase site composes the kit.
+              from: { element: { type: "docs" } },
+              allow: { to: { element: { types: ["ui", "lib", "docs"] } } },
             },
             {
               // UI primitives carry no business logic.
@@ -111,6 +117,7 @@ const eslintConfig = defineConfig([
   },
   globalIgnores([
     "dist/**",
+    "build/**",
     "public/r/**",
     "storybook-static/**",
     "coverage/**",

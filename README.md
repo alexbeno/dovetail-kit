@@ -7,6 +7,7 @@ ink and one orange pen. One source of styles, two ways to use it:
 | ------------------- | ------------------------------------------------------------------------------------------- |
 | **React / Next.js** | shadcn-style components (Radix + `cva`), installable one by one through a shadcn registry   |
 | **Plain HTML**      | the same components as CSS classes (`.btn`, `.card`, `.cells`…) in one stylesheet, no build |
+| **Showcase site**   | one page with every part, deployable on Vercel; it also serves the registry and the CSS     |
 | **Storybook**       | every component, in both themes, plus the HTML build                                        |
 | **Claude Code**     | `CLAUDE.md`, hooks, agents and skills, including a portable `dovetail-html` skill           |
 
@@ -146,13 +147,27 @@ class reference and the rules. Claude then inlines the CSS and JS into the page 
 
 ```bash
 npm install
+npm run dev            # the showcase site, http://localhost:5173
 npm run storybook      # http://localhost:6006, theme switch in the toolbar
 npm run build          # dist/ (HTML flavour) + public/r/ (shadcn registry)
 npm run lint && npm run typecheck && npm test
 ```
 
-Adding or changing a component touches five places (recipe, component, story, registry, HTML
-demo): see [`.claude/skills/kit-patterns/SKILL.md`](.claude/skills/kit-patterns/SKILL.md).
+Adding or changing a component touches six places (recipe, component, story, registry, HTML
+demo, showcase section): see [`.claude/skills/kit-patterns/SKILL.md`](.claude/skills/kit-patterns/SKILL.md).
+
+## Deploy
+
+The showcase site (`index.html` + `src/docs/`) deploys to Vercel as is: import the repository,
+`vercel.json` sets the build command (`npm run build:site`) and the output folder (`build/`).
+The same deployment serves:
+
+| Path                     | What                                                                 |
+| ------------------------ | -------------------------------------------------------------------- |
+| `/`                      | the showcase                                                         |
+| `/r/{name}.json`         | the shadcn registry: `"@dovetail": "https://<domain>/r/{name}.json"` |
+| `/dist/dovetail.min.css` | the HTML flavour (also `dovetail.js`, `dovetail.bundle.js`)          |
+| `/html/demo.html`        | the plain-HTML demo page                                             |
 
 ## What is in the kit
 

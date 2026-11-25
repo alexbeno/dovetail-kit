@@ -12,6 +12,7 @@ Everything in this repo is written in English: code, comments, docs, commit mess
 ## Commands
 
 - Install: `npm install`
+- Showcase site: `npm run dev` (port 5173) · production build: `npm run build:site` (into `build/`) · `npm run preview`
 - Storybook: `npm run storybook` (port 6006) · static build: `npm run build:storybook`
 - Build: `npm run build` (HTML flavour into `dist/`, then the shadcn registry into `public/r/`)
   - HTML only: `npm run build:html` · registry only: `npm run build:registry`
@@ -27,7 +28,7 @@ Everything in this repo is written in English: code, comments, docs, commit mess
 - Tokens only: no hex, rgb or Tailwind palette colour (`bg-zinc-100`) outside `src/styles/tokens.css`.
 - Square corners (`rounded-full` only for dots and balloons), ink rules instead of blurred shadows, one orange (`pen`) action per screen.
 - Both themes, always: check paper and blueprint before finishing a visual change.
-- A public change touches five places: recipe, component, story, `registry.json`, `html/demo.html`. The `kit-patterns` skill lists them.
+- A public change touches six places: recipe, component, story, `registry.json`, `html/demo.html` and the showcase section in `src/docs/sections/`. The `kit-patterns` skill lists them.
 - The architecture is enforced by ESLint: if a dependency rule blocks you, change the design, not the rule.
 - Code style is enforced by ESLint too; the rules a tool cannot check are in the `code-guidelines` skill.
 - A non-trivial feature starts with `/design-first`.
@@ -41,5 +42,7 @@ Everything in this repo is written in English: code, comments, docs, commit mess
 - `cn` comes from `@/lib/cn`, not from a stock `tailwind-merge`: it knows `text-label`, `text-display` and the custom shadows. A stock merge drops `text-label` next to `text-grey`.
 - shadcn's `accent` is the quiet hover tint. The orange is `pen` (`bg-pen`, `text-pen`); the orange button is `variant="accent"`.
 - shadcn's `Sheet` (`sheet.tsx`) is the side panel. The drawing sheet of a screen is `DrawingSheet` in `drafting.tsx` (`.drawing-sheet` in HTML, where the side panel is `.drawer`).
+- The showcase site (`index.html` + `src/docs/`) is what Vercel deploys (`vercel.json`). Its build also serves the registry at `/r/` and the HTML flavour at `/dist/`: a broken `npm run build` breaks the deployment.
+- A CSS variable set on a cell is inherited by a grid nested inside it. `--span` and `--span-sm` are registered as non-inheriting in `theme.css`; do the same for any new per-item variable.
 - `dist/` and `public/r/` are generated: edit the sources and rebuild. Storybook's HTML story serves `dist/` as it was when Storybook started.
 - `.gitignore` ignores `.env*`, so `.env.example` too: add `!.env.example` the day you create one.

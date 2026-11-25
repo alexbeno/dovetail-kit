@@ -1,8 +1,6 @@
-import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook/react-vite";
-import tailwindcss from "@tailwindcss/vite";
-import { mergeConfig } from "vite";
 
+// Tailwind, React and the `@` alias come from the root vite.config.ts.
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(ts|tsx)"],
   addons: ["@storybook/addon-docs"],
@@ -12,14 +10,6 @@ const config: StorybookConfig = {
     { from: "../dist", to: "/dist" },
     { from: "../html/demo.html", to: "/html/demo.html" },
   ],
-  viteFinal(viteConfig) {
-    return mergeConfig(viteConfig, {
-      plugins: [tailwindcss()],
-      resolve: {
-        alias: { "@": fileURLToPath(new URL("../src", import.meta.url)) },
-      },
-    });
-  },
 };
 
 export default config;

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dovetail · the drafting-sheet design system</title>
+    <meta
+      name="description"
+      content="Dovetail: graph paper, black ink and one orange pen. A design system on shadcn/ui and Tailwind CSS 4, for React and for plain HTML."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M0 0H24V18L36 12V36L24 30V48H0Z' fill='%2315181c'/%3E%3Cpath d='M25 1H47V47H25V30.6L37 36.6V11.4L25 17.4Z' fill='%23e2500a'/%3E%3C/svg%3E"
+    />
+    <script>
+      // Paper by default; blueprint only when the visitor chose it.
+      (function () {
+        var stored = null;
+        try {
+          stored = localStorage.getItem("dovetail-theme");
+        } catch {
+          /* storage blocked: stay on paper */
+        }
+        document.documentElement.classList.toggle(
+          "dark",
+          stored === "blueprint",
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/docs/main.tsx"></script>
+  </body>
+</html>

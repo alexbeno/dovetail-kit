@@ -14,7 +14,11 @@ src/
 │   ├── cn.ts             # clsx + tailwind-merge, configured for Dovetail's theme keys
 │   └── utils.ts          # re-exports cn (shadcn convention)
 ├── components/ui/        # shadcn-style components, zero business logic
-└── stories/              # Storybook stories, one file per family
+├── stories/              # Storybook stories, one file per family
+└── docs/                 # the showcase site deployed on Vercel (entry: /index.html)
+    ├── app.tsx           # the page: header strip, hero, sections, footer
+    ├── parts.tsx         # Section and Specimen
+    └── sections/         # one file per chapter
 
 html/                     # the plain-HTML flavour (outside src/)
 ├── generate.mjs          # recipes -> CSS with @apply (pure functions, tested)
@@ -28,7 +32,7 @@ html/                     # the plain-HTML flavour (outside src/)
 
 - `components/ui/` imports `components/ui/` and `lib/`.
 - `lib/` imports only `lib/`, and no React: `html/build.mjs` imports `recipes.ts` in Node.
-- `stories/` import anything in `src/`.
+- `stories/` and `docs/` import anything in `src/`.
 
 Rule: `boundaries/dependencies` in `eslint.config.mjs`.
 

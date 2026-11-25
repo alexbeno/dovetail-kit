@@ -20,5 +20,5 @@
     }
   },
   "include": ["src", ".storybook", "html", "*.config.ts", "*.config.mjs"],
-  "exclude": ["node_modules", "dist", "public", "storybook-static"]
+  "exclude": ["node_modules", "dist", "build", "public", "storybook-static"]
 }
