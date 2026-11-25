@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "title": "Table",
+  "description": "Mono column heads, hairline rows.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/table.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/cn\";\nimport { table } from \"@/lib/recipes\";\n\nconst tableVariants = cva(table.base, { variants: table.variants });\n\ninterface TableProps\n  extends ComponentProps<\"table\">, VariantProps<typeof tableVariants> {}\n\n/** The table styles its own rows and cells: the parts below only carry slots and overrides. */\nfunction Table({ className, compact, ...props }: TableProps) {\n  return (\n    <div data-slot=\"table-container\" className={table.slots.container}>\n      <table\n        data-slot=\"table\"\n        className={cn(tableVariants({ compact }), className)}\n        {...props}\n      />\n    </div>\n  );\n}\n\nfunction TableHeader(props: ComponentProps<\"thead\">) {\n  return <thead data-slot=\"table-header\" {...props} />;\n}\n\nfunction TableBody(props: ComponentProps<\"tbody\">) {\n  return <tbody data-slot=\"table-body\" {...props} />;\n}\n\nfunction TableFooter({ className, ...props }: ComponentProps<\"tfoot\">) {\n  return (\n    <tfoot\n      data-slot=\"table-footer\"\n      className={cn(\"border-t border-ink font-medium\", className)}\n      {...props}\n    />\n  );\n}\n\nfunction TableRow(props: ComponentProps<\"tr\">) {\n  return <tr data-slot=\"table-row\" {...props} />;\n}\n\nfunction TableHead(props: ComponentProps<\"th\">) {\n  return <th data-slot=\"table-head\" scope=\"col\" {...props} />;\n}\n\ninterface TableCellProps extends ComponentProps<\"td\"> {\n  /** Right-aligned mono figures. */\n  numeric?: boolean;\n}\n\nfunction TableCell({ className, numeric = false, ...props }: TableCellProps) {\n  return (\n    <td\n      data-slot=\"table-cell\"\n      className={cn(numeric ? table.slots.num : null, className)}\n      {...props}\n    />\n  );\n}\n\nfunction TableCaption(props: ComponentProps<\"caption\">) {\n  return <caption data-slot=\"table-caption\" {...props} />;\n}\n\nexport {\n  Table,\n  TableBody,\n  TableCaption,\n  TableCell,\n  TableFooter,\n  TableHead,\n  TableHeader,\n  TableRow,\n};\nexport type { TableCellProps, TableProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

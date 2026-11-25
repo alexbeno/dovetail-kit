@@ -1,0 +1,10 @@
+/*
+ * Entry point for a Tailwind 4 project (Next.js, Vite...):
+ *
+ *   @import "tailwindcss";
+ *   @import "./dovetail.css";
+ *
+ * Fonts are separate (fonts.css, next/font or a Google Fonts <link>).
+ */
+@import "./tokens.css";
+@import "./theme.css";

@@ -1,0 +1,675 @@
+[
+  {
+    "key": "button",
+    "name": "btn",
+    "variants": [
+      "btn-accent",
+      "btn-outline",
+      "btn-secondary",
+      "btn-ghost",
+      "btn-destructive",
+      "btn-link",
+      "btn-sm",
+      "btn-lg",
+      "btn-icon",
+      "btn-icon-sm"
+    ],
+    "slots": []
+  },
+  {
+    "key": "link",
+    "name": "link",
+    "variants": [
+      "link-draw",
+      "link-underline",
+      "link-accent"
+    ],
+    "slots": []
+  },
+  {
+    "key": "toggleGroup",
+    "name": "toggle-group",
+    "variants": [],
+    "slots": [
+      "toggle-group-item"
+    ]
+  },
+  {
+    "key": "caption",
+    "name": "caption",
+    "variants": [
+      "caption-ink",
+      "caption-accent"
+    ],
+    "slots": []
+  },
+  {
+    "key": "display",
+    "name": "display",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "heading",
+    "name": "heading",
+    "variants": [
+      "heading-1",
+      "heading-3",
+      "heading-4"
+    ],
+    "slots": []
+  },
+  {
+    "key": "text",
+    "name": "text",
+    "variants": [
+      "text-sm",
+      "text-lg",
+      "text-grey",
+      "text-accent",
+      "text-danger",
+      "text-success"
+    ],
+    "slots": []
+  },
+  {
+    "key": "mark",
+    "name": "mark",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "code",
+    "name": "code",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "codeBlock",
+    "name": "code-block",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "kbd",
+    "name": "kbd",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "prose",
+    "name": "prose",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "desk",
+    "name": "desk",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "drawingSheet",
+    "name": "drawing-sheet",
+    "variants": [
+      "drawing-sheet-ruled",
+      "drawing-sheet-framed"
+    ],
+    "slots": [
+      "drawing-sheet-zones"
+    ]
+  },
+  {
+    "key": "headerStrip",
+    "name": "header-strip",
+    "variants": [],
+    "slots": [
+      "header-strip-end",
+      "header-strip-nav"
+    ]
+  },
+  {
+    "key": "cells",
+    "name": "cells",
+    "variants": [
+      "cells-flush"
+    ],
+    "slots": []
+  },
+  {
+    "key": "cell",
+    "name": "cell",
+    "variants": [
+      "cell-interactive",
+      "cell-accent",
+      "cell-flush"
+    ],
+    "slots": []
+  },
+  {
+    "key": "value",
+    "name": "value",
+    "variants": [
+      "value-mono",
+      "value-lg"
+    ],
+    "slots": []
+  },
+  {
+    "key": "status",
+    "name": "status",
+    "variants": [
+      "status-ink",
+      "status-grey",
+      "status-success",
+      "status-danger",
+      "status-pulse"
+    ],
+    "slots": []
+  },
+  {
+    "key": "stamp",
+    "name": "stamp",
+    "variants": [
+      "stamp-ink",
+      "stamp-success",
+      "stamp-danger",
+      "stamp-animate"
+    ],
+    "slots": []
+  },
+  {
+    "key": "itemNumber",
+    "name": "item-number",
+    "variants": [
+      "item-number-plain",
+      "item-number-active"
+    ],
+    "slots": []
+  },
+  {
+    "key": "dimension",
+    "name": "dimension",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "sectionLine",
+    "name": "section-line",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "emptyState",
+    "name": "empty-state",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "card",
+    "name": "card",
+    "variants": [
+      "card-interactive"
+    ],
+    "slots": [
+      "card-header",
+      "card-title",
+      "card-description",
+      "card-action",
+      "card-content",
+      "card-footer"
+    ]
+  },
+  {
+    "key": "badge",
+    "name": "badge",
+    "variants": [
+      "badge-outline",
+      "badge-secondary",
+      "badge-accent",
+      "badge-success",
+      "badge-destructive",
+      "badge-muted"
+    ],
+    "slots": []
+  },
+  {
+    "key": "table",
+    "name": "table",
+    "variants": [
+      "table-compact"
+    ],
+    "slots": [
+      "table-container",
+      "table-num"
+    ]
+  },
+  {
+    "key": "avatar",
+    "name": "avatar",
+    "variants": [
+      "avatar-round"
+    ],
+    "slots": [
+      "avatar-image",
+      "avatar-fallback"
+    ]
+  },
+  {
+    "key": "progress",
+    "name": "progress",
+    "variants": [],
+    "slots": [
+      "progress-indicator"
+    ]
+  },
+  {
+    "key": "skeleton",
+    "name": "skeleton",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "alert",
+    "name": "alert",
+    "variants": [
+      "alert-ink",
+      "alert-success",
+      "alert-destructive"
+    ],
+    "slots": [
+      "alert-title",
+      "alert-description"
+    ]
+  },
+  {
+    "key": "label",
+    "name": "label",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "input",
+    "name": "input",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "textarea",
+    "name": "textarea",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "nativeSelect",
+    "name": "select",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "field",
+    "name": "field",
+    "variants": [],
+    "slots": [
+      "field-hint",
+      "field-error"
+    ]
+  },
+  {
+    "key": "checkbox",
+    "name": "checkbox",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "radio",
+    "name": "radio",
+    "variants": [],
+    "slots": [
+      "radio-indicator"
+    ]
+  },
+  {
+    "key": "switchControl",
+    "name": "switch",
+    "variants": [],
+    "slots": [
+      "switch-thumb"
+    ]
+  },
+  {
+    "key": "choice",
+    "name": "choice",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "select",
+    "name": "select-menu",
+    "variants": [],
+    "slots": [
+      "select-menu-content",
+      "select-menu-item",
+      "select-menu-indicator",
+      "select-menu-label",
+      "select-menu-separator"
+    ]
+  },
+  {
+    "key": "tabs",
+    "name": "tabs",
+    "variants": [],
+    "slots": [
+      "tabs-list",
+      "tabs-trigger",
+      "tabs-content"
+    ]
+  },
+  {
+    "key": "accordion",
+    "name": "accordion",
+    "variants": [],
+    "slots": [
+      "accordion-item",
+      "accordion-trigger",
+      "accordion-sign",
+      "accordion-content",
+      "accordion-body"
+    ]
+  },
+  {
+    "key": "breadcrumb",
+    "name": "breadcrumb",
+    "variants": [],
+    "slots": [
+      "breadcrumb-item",
+      "breadcrumb-link",
+      "breadcrumb-page",
+      "breadcrumb-separator"
+    ]
+  },
+  {
+    "key": "separator",
+    "name": "separator",
+    "variants": [
+      "separator-rule",
+      "separator-dashed",
+      "separator-cut"
+    ],
+    "slots": []
+  },
+  {
+    "key": "dialog",
+    "name": "dialog",
+    "variants": [
+      "dialog-lg",
+      "dialog-danger"
+    ],
+    "slots": [
+      "dialog-overlay",
+      "dialog-header",
+      "dialog-title",
+      "dialog-description",
+      "dialog-body",
+      "dialog-footer",
+      "dialog-close"
+    ]
+  },
+  {
+    "key": "sheet",
+    "name": "drawer",
+    "variants": [
+      "drawer-left",
+      "drawer-bottom",
+      "drawer-top"
+    ],
+    "slots": [
+      "drawer-overlay",
+      "drawer-header",
+      "drawer-title",
+      "drawer-description",
+      "drawer-body",
+      "drawer-footer",
+      "drawer-close"
+    ]
+  },
+  {
+    "key": "menu",
+    "name": "menu",
+    "variants": [],
+    "slots": [
+      "menu-item",
+      "menu-item-destructive",
+      "menu-item-inset",
+      "menu-indicator",
+      "menu-label",
+      "menu-separator",
+      "menu-shortcut"
+    ]
+  },
+  {
+    "key": "popover",
+    "name": "popover",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "tooltip",
+    "name": "tooltip",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "pageHeader",
+    "name": "page-header",
+    "variants": [],
+    "slots": [
+      "page-header-top",
+      "page-header-text",
+      "page-header-actions"
+    ]
+  },
+  {
+    "key": "pagination",
+    "name": "pagination",
+    "variants": [
+      "pagination-sm"
+    ],
+    "slots": [
+      "pagination-item",
+      "pagination-gap"
+    ]
+  },
+  {
+    "key": "sidebar",
+    "name": "sidebar",
+    "variants": [],
+    "slots": [
+      "sidebar-header",
+      "sidebar-body",
+      "sidebar-footer",
+      "sidebar-section",
+      "sidebar-label",
+      "sidebar-item",
+      "sidebar-item-icon",
+      "sidebar-item-text",
+      "sidebar-item-trailing"
+    ]
+  },
+  {
+    "key": "banner",
+    "name": "banner",
+    "variants": [
+      "banner-accent",
+      "banner-success",
+      "banner-danger",
+      "banner-quiet"
+    ],
+    "slots": [
+      "banner-label",
+      "banner-text",
+      "banner-close"
+    ]
+  },
+  {
+    "key": "split",
+    "name": "split",
+    "variants": [],
+    "slots": [
+      "split-pane",
+      "split-handle"
+    ]
+  },
+  {
+    "key": "logo",
+    "name": "logo",
+    "variants": [],
+    "slots": [
+      "logo-text",
+      "logo-sub"
+    ]
+  },
+  {
+    "key": "timeline",
+    "name": "timeline",
+    "variants": [],
+    "slots": [
+      "timeline-item",
+      "timeline-marker",
+      "timeline-title",
+      "timeline-time",
+      "timeline-body"
+    ]
+  },
+  {
+    "key": "revisions",
+    "name": "revisions",
+    "variants": [],
+    "slots": [
+      "revisions-title",
+      "revisions-head",
+      "revisions-row",
+      "revisions-detail",
+      "revisions-footer"
+    ]
+  },
+  {
+    "key": "parts",
+    "name": "parts",
+    "variants": [],
+    "slots": [
+      "parts-name",
+      "parts-meta"
+    ]
+  },
+  {
+    "key": "notes",
+    "name": "notes",
+    "variants": [
+      "notes-ink"
+    ],
+    "slots": []
+  },
+  {
+    "key": "note",
+    "name": "note",
+    "variants": [
+      "note-accent",
+      "note-success",
+      "note-danger"
+    ],
+    "slots": [
+      "note-layer",
+      "note-title",
+      "note-description",
+      "note-action",
+      "note-close"
+    ]
+  },
+  {
+    "key": "stampLayer",
+    "name": "stamp-layer",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "spinner",
+    "name": "spinner",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "transcript",
+    "name": "transcript",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "message",
+    "name": "message",
+    "variants": [],
+    "slots": [
+      "message-meta",
+      "message-body",
+      "message-caret"
+    ]
+  },
+  {
+    "key": "toolCall",
+    "name": "tool",
+    "variants": [],
+    "slots": [
+      "tool-row",
+      "tool-icon",
+      "tool-name",
+      "tool-target",
+      "tool-meta",
+      "tool-output"
+    ]
+  },
+  {
+    "key": "toolGroup",
+    "name": "tool-group",
+    "variants": [],
+    "slots": []
+  },
+  {
+    "key": "thinking",
+    "name": "thinking",
+    "variants": [],
+    "slots": [
+      "thinking-summary",
+      "thinking-body"
+    ]
+  },
+  {
+    "key": "working",
+    "name": "working",
+    "variants": [],
+    "slots": [
+      "working-title",
+      "working-detail"
+    ]
+  },
+  {
+    "key": "permission",
+    "name": "permission",
+    "variants": [],
+    "slots": [
+      "permission-head",
+      "permission-body",
+      "permission-actions"
+    ]
+  },
+  {
+    "key": "composer",
+    "name": "composer",
+    "variants": [],
+    "slots": [
+      "composer-input",
+      "composer-bar",
+      "composer-tools",
+      "composer-hint"
+    ]
+  }
+]

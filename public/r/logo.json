@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo",
+  "title": "Logo",
+  "description": "The dovetail monogram and the name block.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/logo.tsx",
+      "content": "import { useId, type ComponentProps, type ReactNode } from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { logo } from \"@/lib/recipes\";\n\ninterface DovetailMarkProps extends ComponentProps<\"svg\"> {\n  /** Width and height in pixels. */\n  size?: number;\n  /** Accessible name. */\n  title?: string;\n}\n\n/** The monogram: a dovetail joint, ink tail and hatched orange pin. */\nfunction DovetailMark({\n  size = 34,\n  title = \"Dovetail joint\",\n  ...props\n}: DovetailMarkProps) {\n  const hatchId = `dt-hatch-${useId().replace(/:/g, \"\")}`;\n  return (\n    <svg\n      width={size}\n      height={size}\n      viewBox=\"0 0 48 48\"\n      role=\"img\"\n      aria-label={title}\n      data-slot=\"dovetail-mark\"\n      {...props}\n    >\n      <defs>\n        <pattern\n          id={hatchId}\n          width=\"4\"\n          height=\"4\"\n          patternUnits=\"userSpaceOnUse\"\n          patternTransform=\"rotate(45)\"\n        >\n          <line\n            x1=\"0\"\n            y1=\"0\"\n            x2=\"0\"\n            y2=\"4\"\n            className=\"stroke-pen\"\n            strokeWidth=\"1.2\"\n          />\n        </pattern>\n      </defs>\n      <path d=\"M0 0H24V18L36 12V36L24 30V48H0Z\" className=\"fill-ink\" />\n      <path\n        data-pin\n        className=\"stroke-pen\"\n        d=\"M24.9 0.9H47.1V47.1H24.9V30.6L36.9 36.6V11.4L24.9 17.4Z\"\n        fill={`url(#${hatchId})`}\n        strokeWidth=\"1.8\"\n      />\n    </svg>\n  );\n}\n\ninterface LogoProps extends ComponentProps<\"a\"> {\n  name: ReactNode;\n  subtitle?: ReactNode;\n}\n\n/** Monogram + mono name block. The pin slides out on hover. */\nfunction Logo({ className, name, subtitle, ...props }: LogoProps) {\n  return (\n    <a data-slot=\"logo\" className={cn(logo.base, className)} {...props}>\n      <DovetailMark aria-hidden />\n      <span className={logo.slots.text}>\n        {name}\n        {subtitle == null ? null : (\n          <span className={logo.slots.sub}>{subtitle}</span>\n        )}\n      </span>\n    </a>\n  );\n}\n\nexport { DovetailMark, Logo };\nexport type { DovetailMarkProps, LogoProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

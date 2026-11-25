@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "title": "Avatar",
+  "description": "Square (or round) initials or a greyscale picture.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Avatar as AvatarPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { avatar } from \"@/lib/recipes\";\n\nconst avatarVariants = cva(avatar.base, {\n  variants: avatar.variants,\n  defaultVariants: avatar.defaultVariants,\n});\n\ninterface AvatarProps\n  extends\n    ComponentProps<typeof AvatarPrimitive.Root>,\n    VariantProps<typeof avatarVariants> {}\n\nfunction Avatar({ className, shape, ...props }: AvatarProps) {\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      className={cn(avatarVariants({ shape }), className)}\n      {...props}\n    />\n  );\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      data-slot=\"avatar-image\"\n      className={cn(avatar.slots.image, className)}\n      {...props}\n    />\n  );\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn(avatar.slots.fallback, className)}\n      {...props}\n    />\n  );\n}\n\nexport { Avatar, AvatarFallback, AvatarImage };\nexport type { AvatarProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

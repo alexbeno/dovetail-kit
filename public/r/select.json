@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "title": "Select",
+  "description": "Radix select with the menu look.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/select.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { ChevronDownIcon } from \"lucide-react\";\nimport { Select as SelectPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { select } from \"@/lib/recipes\";\n\nfunction Select(props: ComponentProps<typeof SelectPrimitive.Root>) {\n  return <SelectPrimitive.Root data-slot=\"select\" {...props} />;\n}\n\nfunction SelectGroup(props: ComponentProps<typeof SelectPrimitive.Group>) {\n  return <SelectPrimitive.Group data-slot=\"select-group\" {...props} />;\n}\n\nfunction SelectValue(props: ComponentProps<typeof SelectPrimitive.Value>) {\n  return <SelectPrimitive.Value data-slot=\"select-value\" {...props} />;\n}\n\nfunction SelectTrigger({\n  className,\n  children,\n  ...props\n}: ComponentProps<typeof SelectPrimitive.Trigger>) {\n  return (\n    <SelectPrimitive.Trigger\n      data-slot=\"select-trigger\"\n      className={cn(select.base, className)}\n      {...props}\n    >\n      {children}\n      <SelectPrimitive.Icon asChild>\n        <ChevronDownIcon />\n      </SelectPrimitive.Icon>\n    </SelectPrimitive.Trigger>\n  );\n}\n\nfunction SelectContent({\n  className,\n  children,\n  position = \"popper\",\n  sideOffset = 4,\n  ...props\n}: ComponentProps<typeof SelectPrimitive.Content>) {\n  return (\n    <SelectPrimitive.Portal>\n      <SelectPrimitive.Content\n        data-slot=\"select-content\"\n        position={position}\n        sideOffset={sideOffset}\n        className={cn(select.slots.content, className)}\n        {...props}\n      >\n        <SelectPrimitive.Viewport>{children}</SelectPrimitive.Viewport>\n      </SelectPrimitive.Content>\n    </SelectPrimitive.Portal>\n  );\n}\n\nfunction SelectLabel({\n  className,\n  ...props\n}: ComponentProps<typeof SelectPrimitive.Label>) {\n  return (\n    <SelectPrimitive.Label\n      data-slot=\"select-label\"\n      className={cn(select.slots.label, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SelectItem({\n  className,\n  children,\n  ...props\n}: ComponentProps<typeof SelectPrimitive.Item>) {\n  return (\n    <SelectPrimitive.Item\n      data-slot=\"select-item\"\n      className={cn(select.slots.item, className)}\n      {...props}\n    >\n      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>\n      <SelectPrimitive.ItemIndicator className={select.slots.indicator}>\n        ×\n      </SelectPrimitive.ItemIndicator>\n    </SelectPrimitive.Item>\n  );\n}\n\nfunction SelectSeparator({\n  className,\n  ...props\n}: ComponentProps<typeof SelectPrimitive.Separator>) {\n  return (\n    <SelectPrimitive.Separator\n      data-slot=\"select-separator\"\n      className={cn(select.slots.separator, className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Select,\n  SelectContent,\n  SelectGroup,\n  SelectItem,\n  SelectLabel,\n  SelectSeparator,\n  SelectTrigger,\n  SelectValue,\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner",
+  "title": "Banner",
+  "description": "A strip across the top of the app or of a sheet.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/banner.tsx",
+      "content": "import type { ComponentProps, ReactNode } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/cn\";\nimport { banner } from \"@/lib/recipes\";\n\nconst bannerVariants = cva(banner.base, {\n  variants: banner.variants,\n  defaultVariants: banner.defaultVariants,\n});\n\ninterface BannerProps\n  extends ComponentProps<\"div\">, VariantProps<typeof bannerVariants> {\n  /** Mono caption before the text: \"Notice\", \"Rev C\". */\n  label?: ReactNode;\n  /** A button or link after the text. */\n  action?: ReactNode;\n  /** Shows a × that calls this. */\n  onDismiss?: () => void;\n}\n\n/** A strip across the top of the app or of a sheet. */\nfunction Banner({\n  className,\n  variant,\n  label,\n  action,\n  onDismiss,\n  children,\n  ...props\n}: BannerProps) {\n  return (\n    <div\n      role=\"status\"\n      data-slot=\"banner\"\n      className={cn(bannerVariants({ variant }), className)}\n      {...props}\n    >\n      {label == null ? null : (\n        <span className={banner.slots.label}>{label}</span>\n      )}\n      <span className={banner.slots.text}>{children}</span>\n      {action}\n      {onDismiss === undefined ? null : (\n        <button\n          type=\"button\"\n          aria-label=\"Dismiss\"\n          className={banner.slots.close}\n          onClick={onDismiss}\n        >\n          ×\n        </button>\n      )}\n    </div>\n  );\n}\n\nexport { Banner };\nexport type { BannerProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

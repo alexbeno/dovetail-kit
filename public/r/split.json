@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split",
+  "title": "Split",
+  "description": "Two panes with a draggable ink rule.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/split.tsx",
+      "content": "\"use client\";\n\nimport {\n  useRef,\n  useState,\n  type ComponentProps,\n  type KeyboardEvent,\n  type PointerEvent,\n  type ReactNode,\n} from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { split } from \"@/lib/recipes\";\nimport { clampSize, sizeFromKey } from \"@/lib/split\";\n\ninterface SplitProps extends Omit<ComponentProps<\"div\">, \"children\"> {\n  /** The two panes. */\n  first: ReactNode;\n  second: ReactNode;\n  /** horizontal = side by side; vertical = stacked. */\n  direction?: \"horizontal\" | \"vertical\";\n  /** Initial size of the first pane, in % of the container. */\n  defaultSize?: number;\n  /** Controlled size in %. */\n  size?: number;\n  onSizeChange?: (size: number) => void;\n  /** Limits in %. */\n  min?: number;\n  max?: number;\n  /** Accessible name of the handle. */\n  handleLabel?: string;\n}\n\n/**\n * Two panes with a draggable ink rule between them (list + detail, transcript\n * + diff). Drag, or focus the handle and use the arrow keys.\n */\nfunction Split({\n  className,\n  first,\n  second,\n  direction = \"horizontal\",\n  defaultSize = 40,\n  size,\n  onSizeChange,\n  min = 15,\n  max = 85,\n  handleLabel = \"Resize panes\",\n  ...props\n}: SplitProps) {\n  const rootRef = useRef<HTMLDivElement>(null);\n  const [uncontrolled, setUncontrolled] = useState(defaultSize);\n  const [isDragging, setIsDragging] = useState(false);\n  const current = size ?? uncontrolled;\n  const isVertical = direction === \"vertical\";\n\n  function update(next: number) {\n    const clamped = clampSize(next, min, max);\n    if (size === undefined) {\n      setUncontrolled(clamped);\n    }\n    onSizeChange?.(clamped);\n  }\n\n  function handlePointerDown(event: PointerEvent<HTMLDivElement>) {\n    event.currentTarget.setPointerCapture(event.pointerId);\n    setIsDragging(true);\n  }\n\n  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {\n    if (!isDragging || rootRef.current === null) {\n      return;\n    }\n    const rect = rootRef.current.getBoundingClientRect();\n    const ratio = isVertical\n      ? (event.clientY - rect.top) / rect.height\n      : (event.clientX - rect.left) / rect.width;\n    update(ratio * 100);\n  }\n\n  function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {\n    const next = sizeFromKey(event.key, {\n      current,\n      min,\n      max,\n      isVertical,\n      isLargeStep: event.shiftKey,\n    });\n    if (next === null) {\n      return;\n    }\n    update(next);\n    event.preventDefault();\n  }\n\n  return (\n    <div\n      ref={rootRef}\n      data-slot=\"split\"\n      data-direction={direction}\n      className={cn(split.base, className)}\n      {...props}\n    >\n      <div className={split.slots.pane} style={{ flex: `0 0 ${current}%` }}>\n        {first}\n      </div>\n      <div\n        role=\"separator\"\n        aria-label={handleLabel}\n        aria-orientation={isVertical ? \"horizontal\" : \"vertical\"}\n        aria-valuenow={Math.round(current)}\n        aria-valuemin={min}\n        aria-valuemax={max}\n        tabIndex={0}\n        data-dragging={isDragging ? \"\" : undefined}\n        className={split.slots.handle}\n        onPointerDown={handlePointerDown}\n        onPointerMove={handlePointerMove}\n        onPointerUp={() => setIsDragging(false)}\n        onPointerCancel={() => setIsDragging(false)}\n        onKeyDown={handleKeyDown}\n      />\n      <div className={split.slots.pane}>{second}</div>\n    </div>\n  );\n}\n\nexport { Split };\nexport type { SplitProps };\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "src/lib/split.ts",
+      "content": "/** Keeps a pane size (in %) inside its limits. */\nexport function clampSize(size: number, min: number, max: number): number {\n  return Math.min(max, Math.max(min, size));\n}\n\ninterface KeyContext {\n  current: number;\n  min: number;\n  max: number;\n  /** Stacked panes: the handle moves with the up and down arrows. */\n  isVertical: boolean;\n  /** Shift held: 10% steps instead of 2%. */\n  isLargeStep: boolean;\n}\n\n/** New size of the first pane after a key press on the handle, or null if the key does nothing. */\nexport function sizeFromKey(key: string, context: KeyContext): number | null {\n  const step = context.isLargeStep ? 10 : 2;\n  const decrease = context.isVertical ? \"ArrowUp\" : \"ArrowLeft\";\n  const increase = context.isVertical ? \"ArrowDown\" : \"ArrowRight\";\n  if (key === decrease) {\n    return context.current - step;\n  }\n  if (key === increase) {\n    return context.current + step;\n  }\n  if (key === \"Home\") {\n    return context.min;\n  }\n  if (key === \"End\") {\n    return context.max;\n  }\n  return null;\n}\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:ui"
+}

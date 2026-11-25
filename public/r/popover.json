@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "title": "Popover",
+  "description": "Floating panel anchored to a trigger.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/popover.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { Popover as PopoverPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { popover } from \"@/lib/recipes\";\n\nfunction Popover(props: ComponentProps<typeof PopoverPrimitive.Root>) {\n  return <PopoverPrimitive.Root data-slot=\"popover\" {...props} />;\n}\n\nfunction PopoverTrigger(\n  props: ComponentProps<typeof PopoverPrimitive.Trigger>,\n) {\n  return <PopoverPrimitive.Trigger data-slot=\"popover-trigger\" {...props} />;\n}\n\nfunction PopoverAnchor(props: ComponentProps<typeof PopoverPrimitive.Anchor>) {\n  return <PopoverPrimitive.Anchor data-slot=\"popover-anchor\" {...props} />;\n}\n\nfunction PopoverContent({\n  className,\n  align = \"start\",\n  sideOffset = 4,\n  ...props\n}: ComponentProps<typeof PopoverPrimitive.Content>) {\n  return (\n    <PopoverPrimitive.Portal>\n      <PopoverPrimitive.Content\n        data-slot=\"popover-content\"\n        align={align}\n        sideOffset={sideOffset}\n        className={cn(popover.base, className)}\n        {...props}\n      />\n    </PopoverPrimitive.Portal>\n  );\n}\n\nexport { Popover, PopoverAnchor, PopoverContent, PopoverTrigger };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

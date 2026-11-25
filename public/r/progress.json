@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "title": "Progress",
+  "description": "Drawn as a dimension line, filled in orange.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/progress.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { Progress as ProgressPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { progress } from \"@/lib/recipes\";\n\n/** Omit `value` (or pass null) for an indeterminate bar. */\nfunction Progress({\n  className,\n  value,\n  ...props\n}: ComponentProps<typeof ProgressPrimitive.Root>) {\n  const width = value == null ? undefined : `${value}%`;\n  return (\n    <ProgressPrimitive.Root\n      data-slot=\"progress\"\n      value={value}\n      className={cn(progress.base, className)}\n      {...props}\n    >\n      <ProgressPrimitive.Indicator\n        data-slot=\"progress-indicator\"\n        className={progress.slots.indicator}\n        style={{ width }}\n      />\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

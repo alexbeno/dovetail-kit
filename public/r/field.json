@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field",
+  "title": "Field",
+  "description": "Field, FieldHint, FieldError and Choice wrappers for form controls.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/field.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { choice, field } from \"@/lib/recipes\";\n\n/** Label + control + hint or error, stacked. */\nfunction Field({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div data-slot=\"field\" className={cn(field.base, className)} {...props} />\n  );\n}\n\nfunction FieldHint({ className, ...props }: ComponentProps<\"p\">) {\n  return (\n    <p\n      data-slot=\"field-hint\"\n      className={cn(field.slots.hint, className)}\n      {...props}\n    />\n  );\n}\n\nfunction FieldError({ className, ...props }: ComponentProps<\"p\">) {\n  return (\n    <p\n      role=\"alert\"\n      data-slot=\"field-error\"\n      className={cn(field.slots.error, className)}\n      {...props}\n    />\n  );\n}\n\n/** A checkbox, radio or switch next to its text. */\nfunction Choice({ className, ...props }: ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"choice\"\n      className={cn(choice.base, className)}\n      {...props}\n    />\n  );\n}\n\nexport { Choice, Field, FieldError, FieldHint };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

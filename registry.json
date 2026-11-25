@@ -1,0 +1,636 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "dovetail",
+  "homepage": "https://www.alexisbenoliel.fr",
+  "items": [
+    {
+      "name": "dovetail-core",
+      "type": "registry:lib",
+      "title": "Dovetail core",
+      "description": "Tokens, the Tailwind 4 theme, the recipes (every component's classes) and the configured `cn`. Required by every Dovetail component.",
+      "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+      "files": [
+        {
+          "path": "src/lib/cn.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/recipes.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/styles/tokens.css",
+          "type": "registry:file",
+          "target": "~/styles/dovetail/tokens.css"
+        },
+        {
+          "path": "src/styles/theme.css",
+          "type": "registry:file",
+          "target": "~/styles/dovetail/theme.css"
+        },
+        {
+          "path": "src/styles/dovetail.css",
+          "type": "registry:file",
+          "target": "~/styles/dovetail/dovetail.css"
+        }
+      ],
+      "docs": "Import the theme once, after Tailwind, in your global stylesheet: @import \"tailwindcss\"; @import \"../styles/dovetail/dovetail.css\"; (adjust the relative path) and remove shadcn's default :root/.dark variables and @theme block so they do not override Dovetail's."
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Collapsible sections with a +/− sign.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "agent",
+      "type": "registry:ui",
+      "title": "Agent kit",
+      "description": "Transcript, Message, Thinking, ToolCall, ToolGroup, WorkIndicator, PermissionRequest, Composer: interfaces between people and AI agents.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/agent.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "A note in the margin: accent rule on the left, tinted paper.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert dialog",
+      "description": "A dialog that must be answered.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Square (or round) initials or a greyscale picture.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Mono tag for states, revisions and counts.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "banner",
+      "type": "registry:ui",
+      "title": "Banner",
+      "description": "A strip across the top of the app or of a sheet.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/banner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Mono trail separated by slashes.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Ink, outline, ghost, destructive, and the one orange `accent`.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Ink-framed panel with header, content and footer.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Square box, orange when checked.",
+      "dependencies": ["class-variance-authority", "radix-ui", "lucide-react"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context menu",
+      "description": "The menu of a right click.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal framed in 2px ink.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drafting",
+      "type": "registry:ui",
+      "title": "Drafting",
+      "description": "Desk, DrawingSheet, HeaderStrip, Cells/Cell, Value, Status, Stamp, ItemNumber, Dimension, SectionLine, EmptyState.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/drafting.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown menu",
+      "description": "Floating menu with a hard ink shadow.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field, FieldHint, FieldError and Choice wrappers for form controls.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input with a 1.5px ink border.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Mono uppercase label for a form control.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lists",
+      "type": "registry:ui",
+      "title": "Lists",
+      "description": "PartsList, RevisionList and NoteList: the lists found on a drawing.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/lists.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "logo",
+      "type": "registry:ui",
+      "title": "Logo",
+      "description": "The dovetail monogram and the name block.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/logo.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native select",
+      "description": "A styled native <select>.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "page-header",
+      "type": "registry:ui",
+      "title": "Page header",
+      "description": "Trail or caption, title, description and actions.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/page-header.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Numbered pages in a segmented frame.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/pagination.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/pagination.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Floating panel anchored to a trigger.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Drawn as a dimension line, filled in orange.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio group",
+      "description": "Round radios, orange when checked.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Radix select with the menu look.",
+      "dependencies": ["class-variance-authority", "radix-ui", "lucide-react"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Ink, rule, dashed or cutting-plane line.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Panel sliding from an edge (shadcn's Sheet).",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "App navigation column that folds to a rail.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Sliding pencil hatching while content loads.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "A drawn circle that turns.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "split",
+      "type": "registry:ui",
+      "title": "Split",
+      "description": "Two panes with a draggable ink rule.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/split.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/lib/split.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Square switch that snaps.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Mono column heads, hairline rows.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Mono tabs with an orange underline on the current one.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line input.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "Steps in time with a status marker.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toaster",
+      "type": "registry:ui",
+      "title": "Toaster",
+      "description": "StampProvider and useStamp(): rubber stamps and notes.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/toaster.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle group",
+      "description": "Segmented control.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Inked mono caption on hover or focus.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "Caption, Display, Heading, Text, Mark, Code, CodeBlock, Kbd, Prose, Link.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@dovetail/dovetail-core"],
+      "files": [
+        {
+          "path": "src/components/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

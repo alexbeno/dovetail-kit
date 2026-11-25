@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Badge",
+  "description": "Mono tag for states, revisions and counts.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Slot } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { badge } from \"@/lib/recipes\";\n\nconst badgeVariants = cva(badge.base, {\n  variants: badge.variants,\n  defaultVariants: badge.defaultVariants,\n});\n\ninterface BadgeProps\n  extends ComponentProps<\"span\">, VariantProps<typeof badgeVariants> {\n  asChild?: boolean;\n}\n\nfunction Badge({ className, variant, asChild = false, ...props }: BadgeProps) {\n  const Comp = asChild ? Slot.Root : \"span\";\n  return (\n    <Comp\n      data-slot=\"badge\"\n      className={cn(badgeVariants({ variant }), className)}\n      {...props}\n    />\n  );\n}\n\nexport { Badge, badgeVariants };\nexport type { BadgeProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

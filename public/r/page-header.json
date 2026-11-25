@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "page-header",
+  "title": "Page header",
+  "description": "Trail or caption, title, description and actions.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/page-header.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { pageHeader } from \"@/lib/recipes\";\n\n/** Top of a page: trail or caption, title, one-line description, actions. */\nfunction PageHeader({ className, ...props }: ComponentProps<\"header\">) {\n  return (\n    <header\n      data-slot=\"page-header\"\n      className={cn(pageHeader.base, className)}\n      {...props}\n    />\n  );\n}\n\n/** Full-width first row: a Breadcrumb or a Caption. */\nfunction PageHeaderTop({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"page-header-top\"\n      className={cn(pageHeader.slots.top, className)}\n      {...props}\n    />\n  );\n}\n\n/** The Heading and its description. */\nfunction PageHeaderText({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"page-header-text\"\n      className={cn(pageHeader.slots.text, className)}\n      {...props}\n    />\n  );\n}\n\n/** Buttons on the right: put the one accent action last. */\nfunction PageHeaderActions({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"page-header-actions\"\n      className={cn(pageHeader.slots.actions, className)}\n      {...props}\n    />\n  );\n}\n\nexport { PageHeader, PageHeaderActions, PageHeaderText, PageHeaderTop };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

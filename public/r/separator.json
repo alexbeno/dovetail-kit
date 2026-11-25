@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "title": "Separator",
+  "description": "Ink, rule, dashed or cutting-plane line.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/separator.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Separator as SeparatorPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { separator } from \"@/lib/recipes\";\n\nconst separatorVariants = cva(separator.base, {\n  variants: separator.variants,\n  defaultVariants: separator.defaultVariants,\n});\n\ninterface SeparatorProps\n  extends\n    ComponentProps<typeof SeparatorPrimitive.Root>,\n    VariantProps<typeof separatorVariants> {}\n\nfunction Separator({\n  className,\n  variant,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: SeparatorProps) {\n  return (\n    <SeparatorPrimitive.Root\n      data-slot=\"separator\"\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(separatorVariants({ variant }), className)}\n      {...props}\n    />\n  );\n}\n\nexport { Separator };\nexport type { SeparatorProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

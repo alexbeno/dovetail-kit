@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "title": "Skeleton",
+  "description": "Sliding pencil hatching while content loads.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/skeleton.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { skeleton } from \"@/lib/recipes\";\n\nfunction Skeleton({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      aria-hidden\n      data-slot=\"skeleton\"\n      className={cn(skeleton.base, className)}\n      {...props}\n    />\n  );\n}\n\nexport { Skeleton };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

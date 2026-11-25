@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "title": "Button",
+  "description": "Ink, outline, ghost, destructive, and the one orange `accent`.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Slot } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { button } from \"@/lib/recipes\";\n\nconst buttonVariants = cva(button.base, {\n  variants: button.variants,\n  defaultVariants: button.defaultVariants,\n});\n\ninterface ButtonProps\n  extends ComponentProps<\"button\">, VariantProps<typeof buttonVariants> {\n  /** Render the child element (a link, for instance) with the button's look. */\n  asChild?: boolean;\n}\n\nfunction Button({\n  className,\n  variant,\n  size,\n  asChild = false,\n  ...props\n}: ButtonProps) {\n  const Comp = asChild ? Slot.Root : \"button\";\n  return (\n    <Comp\n      data-slot=\"button\"\n      data-variant={variant}\n      className={cn(buttonVariants({ variant, size }), className)}\n      {...props}\n    />\n  );\n}\n\nexport { Button, buttonVariants };\nexport type { ButtonProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "title": "Dialog",
+  "description": "Modal framed in 2px ink.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/dialog.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Dialog as DialogPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { dialog } from \"@/lib/recipes\";\n\nconst dialogVariants = cva(dialog.base, {\n  variants: dialog.variants,\n  defaultVariants: dialog.defaultVariants,\n});\n\nfunction Dialog(props: ComponentProps<typeof DialogPrimitive.Root>) {\n  return <DialogPrimitive.Root data-slot=\"dialog\" {...props} />;\n}\n\nfunction DialogTrigger(props: ComponentProps<typeof DialogPrimitive.Trigger>) {\n  return <DialogPrimitive.Trigger data-slot=\"dialog-trigger\" {...props} />;\n}\n\nfunction DialogClose(props: ComponentProps<typeof DialogPrimitive.Close>) {\n  return <DialogPrimitive.Close data-slot=\"dialog-close\" {...props} />;\n}\n\ninterface DialogContentProps\n  extends\n    ComponentProps<typeof DialogPrimitive.Content>,\n    VariantProps<typeof dialogVariants> {\n  /** Hide the × in the corner, for dialogs that must be answered. */\n  hideClose?: boolean;\n}\n\nfunction DialogContent({\n  className,\n  children,\n  size,\n  hideClose = false,\n  ...props\n}: DialogContentProps) {\n  return (\n    <DialogPrimitive.Portal>\n      <DialogPrimitive.Overlay\n        data-slot=\"dialog-overlay\"\n        className={dialog.slots.overlay}\n      />\n      <DialogPrimitive.Content\n        data-slot=\"dialog-content\"\n        className={cn(dialogVariants({ size }), className)}\n        {...props}\n      >\n        {children}\n        {hideClose ? null : (\n          <DialogPrimitive.Close\n            aria-label=\"Close\"\n            className={dialog.slots.close}\n          >\n            ×\n          </DialogPrimitive.Close>\n        )}\n      </DialogPrimitive.Content>\n    </DialogPrimitive.Portal>\n  );\n}\n\nfunction DialogHeader({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"dialog-header\"\n      className={cn(dialog.slots.header, className)}\n      {...props}\n    />\n  );\n}\n\nfunction DialogBody({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"dialog-body\"\n      className={cn(dialog.slots.body, className)}\n      {...props}\n    />\n  );\n}\n\nfunction DialogFooter({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"dialog-footer\"\n      className={cn(dialog.slots.footer, className)}\n      {...props}\n    />\n  );\n}\n\nfunction DialogTitle({\n  className,\n  ...props\n}: ComponentProps<typeof DialogPrimitive.Title>) {\n  return (\n    <DialogPrimitive.Title\n      data-slot=\"dialog-title\"\n      className={cn(dialog.slots.title, className)}\n      {...props}\n    />\n  );\n}\n\nfunction DialogDescription({\n  className,\n  ...props\n}: ComponentProps<typeof DialogPrimitive.Description>) {\n  return (\n    <DialogPrimitive.Description\n      data-slot=\"dialog-description\"\n      className={cn(dialog.slots.description, className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Dialog,\n  DialogBody,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n};\nexport type { DialogContentProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

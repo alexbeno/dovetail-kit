@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "native-select",
+  "title": "Native select",
+  "description": "A styled native <select>.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/native-select.tsx",
+      "content": "import type { ComponentProps } from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { nativeSelect } from \"@/lib/recipes\";\n\n/** A native <select>: the lightest option, and the one the HTML build uses. */\nfunction NativeSelect({ className, ...props }: ComponentProps<\"select\">) {\n  return (\n    <select\n      data-slot=\"native-select\"\n      className={cn(nativeSelect.base, className)}\n      {...props}\n    />\n  );\n}\n\nexport { NativeSelect };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

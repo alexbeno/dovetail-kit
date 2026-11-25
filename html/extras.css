@@ -1,0 +1,41 @@
+/*
+ * HTML-only pieces: patterns that React gets from Radix and plain HTML gets
+ * from native elements (<details>, [data-tooltip]). Appended to the classes
+ * generated from the recipes.
+ */
+@layer components {
+  /*
+   * Dropdown without JavaScript:
+   *   <details class="dropdown">
+   *     <summary class="btn btn-outline">Menu</summary>
+   *     <div class="menu">…</div>
+   *   </details>
+   * dovetail.js adds: close on outside click, on Escape and on item click.
+   */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown > summary {
+    list-style: none;
+  }
+  .dropdown > summary::-webkit-details-marker {
+    display: none;
+  }
+  .dropdown > .menu,
+  .dropdown > .popover {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+  }
+  .dropdown-end > .menu,
+  .dropdown-end > .popover {
+    right: 0;
+    left: auto;
+  }
+
+  /* Tooltip from an attribute: <button data-tooltip="Copy">. Supplementary text only. */
+  [data-tooltip] {
+    position: relative;
+  }
+}

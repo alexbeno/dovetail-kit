@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sidebar",
+  "title": "Sidebar",
+  "description": "App navigation column that folds to a rail.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sidebar.tsx",
+      "content": "import type { ComponentProps, CSSProperties, ReactNode } from \"react\";\nimport { Slot } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { sidebar } from \"@/lib/recipes\";\n\ninterface SidebarProps extends ComponentProps<\"aside\"> {\n  /** Folded to a 60px rail: items show their icon only. */\n  collapsed?: boolean;\n  /** Expanded width, any CSS length. Default 248px. */\n  width?: string;\n}\n\n/** App navigation column: sections of mono items, the current one marked in orange. */\nfunction Sidebar({\n  className,\n  style,\n  collapsed = false,\n  width,\n  ...props\n}: SidebarProps) {\n  const vars = { \"--sidebar-width\": width } as CSSProperties;\n  return (\n    <aside\n      data-slot=\"sidebar\"\n      data-collapsed={collapsed}\n      style={{ ...vars, ...style }}\n      className={cn(sidebar.base, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SidebarHeader({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"sidebar-header\"\n      className={cn(sidebar.slots.header, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SidebarBody({ className, ...props }: ComponentProps<\"nav\">) {\n  return (\n    <nav\n      data-slot=\"sidebar-body\"\n      className={cn(sidebar.slots.body, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SidebarFooter({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"sidebar-footer\"\n      className={cn(sidebar.slots.footer, className)}\n      {...props}\n    />\n  );\n}\n\ninterface SidebarSectionProps extends ComponentProps<\"div\"> {\n  /** Mono caption above the items. */\n  label?: ReactNode;\n}\n\nfunction SidebarSection({\n  className,\n  label,\n  children,\n  ...props\n}: SidebarSectionProps) {\n  return (\n    <div\n      data-slot=\"sidebar-section\"\n      className={cn(sidebar.slots.section, className)}\n      {...props}\n    >\n      {label == null ? null : (\n        <div className={sidebar.slots.label}>{label}</div>\n      )}\n      {children}\n    </div>\n  );\n}\n\ninterface SidebarItemProps extends ComponentProps<\"a\"> {\n  icon?: ReactNode;\n  /** Count badge, kbd… pushed to the far edge. */\n  trailing?: ReactNode;\n  /** The current page. */\n  active?: boolean;\n  /**\n   * Render your router's link (or a button) as the item. Its own children are\n   * kept as they are: `icon` and `trailing` are ignored.\n   */\n  asChild?: boolean;\n}\n\nfunction SidebarItem({\n  className,\n  icon,\n  trailing,\n  active = false,\n  asChild = false,\n  children,\n  ...props\n}: SidebarItemProps) {\n  const shared = {\n    \"data-slot\": \"sidebar-item\",\n    \"aria-current\": active ? (\"page\" as const) : undefined,\n    className: cn(sidebar.slots.item, className),\n  };\n  if (asChild) {\n    return (\n      <Slot.Root {...shared} {...props}>\n        {children}\n      </Slot.Root>\n    );\n  }\n  return (\n    <a {...shared} {...props}>\n      {icon == null ? null : (\n        <span aria-hidden className={sidebar.slots.itemIcon}>\n          {icon}\n        </span>\n      )}\n      <span className={sidebar.slots.itemText}>{children}</span>\n      {trailing == null ? null : (\n        <span className={sidebar.slots.itemTrailing}>{trailing}</span>\n      )}\n    </a>\n  );\n}\n\nexport {\n  Sidebar,\n  SidebarBody,\n  SidebarFooter,\n  SidebarHeader,\n  SidebarItem,\n  SidebarSection,\n};\nexport type { SidebarItemProps, SidebarProps, SidebarSectionProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

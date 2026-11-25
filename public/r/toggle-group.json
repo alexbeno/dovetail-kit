@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group",
+  "title": "Toggle group",
+  "description": "Segmented control.",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/toggle-group.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { ToggleGroup as ToggleGroupPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { toggleGroup } from \"@/lib/recipes\";\n\nfunction ToggleGroup({\n  className,\n  ...props\n}: ComponentProps<typeof ToggleGroupPrimitive.Root>) {\n  return (\n    <ToggleGroupPrimitive.Root\n      data-slot=\"toggle-group\"\n      className={cn(toggleGroup.base, className)}\n      {...props}\n    />\n  );\n}\n\nfunction ToggleGroupItem({\n  className,\n  ...props\n}: ComponentProps<typeof ToggleGroupPrimitive.Item>) {\n  return (\n    <ToggleGroupPrimitive.Item\n      data-slot=\"toggle-group-item\"\n      className={cn(toggleGroup.slots.item, className)}\n      {...props}\n    />\n  );\n}\n\nexport { ToggleGroup, ToggleGroupItem };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "timeline",
+  "title": "Timeline",
+  "description": "Steps in time with a status marker.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/timeline.tsx",
+      "content": "import type { ComponentProps, ReactNode } from \"react\";\nimport { cn } from \"@/lib/cn\";\nimport { timeline } from \"@/lib/recipes\";\n\nfunction Timeline({ className, ...props }: ComponentProps<\"ol\">) {\n  return (\n    <ol\n      data-slot=\"timeline\"\n      className={cn(timeline.base, className)}\n      {...props}\n    />\n  );\n}\n\ninterface TimelineItemProps extends Omit<ComponentProps<\"li\">, \"title\"> {\n  title: ReactNode;\n  /** Mono detail on the right: a time, a duration. */\n  time?: ReactNode;\n  /** done = ink outline; active pulses in orange; pending is dashed grey. */\n  status?: \"done\" | \"success\" | \"danger\" | \"active\" | \"pending\";\n}\n\nfunction TimelineItem({\n  className,\n  title,\n  time,\n  status = \"done\",\n  children,\n  ...props\n}: TimelineItemProps) {\n  return (\n    <li\n      data-slot=\"timeline-item\"\n      data-status={status}\n      className={cn(timeline.slots.item, className)}\n      {...props}\n    >\n      <span aria-hidden className={timeline.slots.marker} />\n      <span className={timeline.slots.title}>{title}</span>\n      <span className={timeline.slots.time}>{time}</span>\n      {children == null ? null : (\n        <div className={timeline.slots.body}>{children}</div>\n      )}\n    </li>\n  );\n}\n\nexport { Timeline, TimelineItem };\nexport type { TimelineItemProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

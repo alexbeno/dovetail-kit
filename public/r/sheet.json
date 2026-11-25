@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sheet",
+  "title": "Sheet",
+  "description": "Panel sliding from an edge (shadcn's Sheet).",
+  "dependencies": [
+    "class-variance-authority",
+    "radix-ui"
+  ],
+  "registryDependencies": [
+    "@dovetail/dovetail-core"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sheet.tsx",
+      "content": "\"use client\";\n\nimport type { ComponentProps } from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Dialog as SheetPrimitive } from \"radix-ui\";\nimport { cn } from \"@/lib/cn\";\nimport { sheet } from \"@/lib/recipes\";\n\n/**\n * shadcn's Sheet: a panel sliding from an edge. Not to be confused with the\n * drawing sheet of a Dovetail screen, which is `DrawingSheet` in drafting.tsx.\n */\nconst sheetVariants = cva(sheet.base, {\n  variants: sheet.variants,\n  defaultVariants: sheet.defaultVariants,\n});\n\nfunction Sheet(props: ComponentProps<typeof SheetPrimitive.Root>) {\n  return <SheetPrimitive.Root data-slot=\"sheet\" {...props} />;\n}\n\nfunction SheetTrigger(props: ComponentProps<typeof SheetPrimitive.Trigger>) {\n  return <SheetPrimitive.Trigger data-slot=\"sheet-trigger\" {...props} />;\n}\n\nfunction SheetClose(props: ComponentProps<typeof SheetPrimitive.Close>) {\n  return <SheetPrimitive.Close data-slot=\"sheet-close\" {...props} />;\n}\n\ninterface SheetContentProps\n  extends\n    ComponentProps<typeof SheetPrimitive.Content>,\n    VariantProps<typeof sheetVariants> {}\n\nfunction SheetContent({\n  className,\n  children,\n  side,\n  ...props\n}: SheetContentProps) {\n  return (\n    <SheetPrimitive.Portal>\n      <SheetPrimitive.Overlay\n        data-slot=\"sheet-overlay\"\n        className={sheet.slots.overlay}\n      />\n      <SheetPrimitive.Content\n        data-slot=\"sheet-content\"\n        className={cn(sheetVariants({ side }), className)}\n        {...props}\n      >\n        {children}\n        <SheetPrimitive.Close aria-label=\"Close\" className={sheet.slots.close}>\n          ×\n        </SheetPrimitive.Close>\n      </SheetPrimitive.Content>\n    </SheetPrimitive.Portal>\n  );\n}\n\nfunction SheetHeader({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"sheet-header\"\n      className={cn(sheet.slots.header, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SheetBody({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"sheet-body\"\n      className={cn(sheet.slots.body, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SheetFooter({ className, ...props }: ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"sheet-footer\"\n      className={cn(sheet.slots.footer, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SheetTitle({\n  className,\n  ...props\n}: ComponentProps<typeof SheetPrimitive.Title>) {\n  return (\n    <SheetPrimitive.Title\n      data-slot=\"sheet-title\"\n      className={cn(sheet.slots.title, className)}\n      {...props}\n    />\n  );\n}\n\nfunction SheetDescription({\n  className,\n  ...props\n}: ComponentProps<typeof SheetPrimitive.Description>) {\n  return (\n    <SheetPrimitive.Description\n      data-slot=\"sheet-description\"\n      className={cn(sheet.slots.description, className)}\n      {...props}\n    />\n  );\n}\n\nexport {\n  Sheet,\n  SheetBody,\n  SheetClose,\n  SheetContent,\n  SheetDescription,\n  SheetFooter,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n};\nexport type { SheetContentProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,127 @@
+/*
+ * Dovetail tokens: the single source of truth for colour, type and line.
+ *
+ * The language is an engineering drawing: cool graph paper, black ink and one
+ * orange pen. Blueprint is the same drawing printed as a negative.
+ *
+ * Two layers:
+ *   1. --dt-*      the drawing's own vocabulary (paper, ink, pen, rule...)
+ *   2. shadcn/ui   --background, --primary, --border... mapped onto layer 1,
+ *                  so any shadcn component or block picks up the system.
+ *
+ * Plain CSS, no Tailwind needed: this file works on its own in any page.
+ */
+
+:root,
+.light,
+[data-theme="paper"] {
+  color-scheme: light;
+  --dt-color-desk: #eaebe6;
+  --dt-color-paper: #f6f7f4;
+  --dt-color-ink: #15181c;
+  --dt-color-pen: #e2500a;
+  --dt-color-grey: #5b6068;
+  --dt-color-rule: #cfd4d8;
+  --dt-color-danger: #b3261e;
+  --dt-color-success: #2e7d4f;
+  --dt-color-grid-major: rgb(21 24 28 / 0.08);
+  --dt-color-grid-minor: rgb(21 24 28 / 0.035);
+  --dt-color-backdrop: rgb(10 28 42 / 0.45);
+}
+
+.dark,
+[data-theme="blueprint"] {
+  color-scheme: dark;
+  --dt-color-desk: #0a1c2a;
+  --dt-color-paper: #10293b;
+  --dt-color-ink: #efe8da;
+  --dt-color-pen: #ff7a5c;
+  --dt-color-grey: #a7b6c1;
+  --dt-color-rule: #2d4b60;
+  --dt-color-danger: #ff8a9a;
+  --dt-color-success: #7fd6a8;
+  --dt-color-grid-major: rgb(239 232 218 / 0.09);
+  --dt-color-grid-minor: rgb(239 232 218 / 0.04);
+  --dt-color-backdrop: rgb(4 12 20 / 0.6);
+}
+
+/*
+ * shadcn/ui semantic tokens. Declared on every theme scope (not only :root)
+ * so that a nested `.dark` or `[data-theme]` re-resolves them for its subtree.
+ *
+ * Note: shadcn's `accent` is the quiet hover tint of menus and rows. The
+ * orange pen is `--dt-color-pen` (Tailwind: `bg-pen`, `text-pen`), reserved
+ * for the one primary action, the current state and links.
+ */
+:root,
+.light,
+.dark,
+[data-theme="paper"],
+[data-theme="blueprint"] {
+  --background: var(--dt-color-paper);
+  --foreground: var(--dt-color-ink);
+  --card: var(--dt-color-paper);
+  --card-foreground: var(--dt-color-ink);
+  --popover: var(--dt-color-paper);
+  --popover-foreground: var(--dt-color-ink);
+  --primary: var(--dt-color-ink);
+  --primary-foreground: var(--dt-color-paper);
+  --secondary: var(--dt-color-desk);
+  --secondary-foreground: var(--dt-color-ink);
+  --muted: var(--dt-color-desk);
+  --muted-foreground: var(--dt-color-grey);
+  --accent: color-mix(in srgb, var(--dt-color-pen) 8%, var(--dt-color-paper));
+  --accent-foreground: var(--dt-color-ink);
+  --destructive: var(--dt-color-danger);
+  --destructive-foreground: var(--dt-color-paper);
+  --border: var(--dt-color-rule);
+  --input: var(--dt-color-ink);
+  --ring: var(--dt-color-pen);
+  --chart-1: var(--dt-color-pen);
+  --chart-2: var(--dt-color-ink);
+  --chart-3: var(--dt-color-grey);
+  --chart-4: var(--dt-color-success);
+  --chart-5: var(--dt-color-rule);
+  --sidebar: var(--dt-color-paper);
+  --sidebar-foreground: var(--dt-color-ink);
+  --sidebar-primary: var(--dt-color-pen);
+  --sidebar-primary-foreground: var(--dt-color-paper);
+  --sidebar-accent: color-mix(
+    in srgb,
+    var(--dt-color-pen) 8%,
+    var(--dt-color-paper)
+  );
+  --sidebar-accent-foreground: var(--dt-color-pen);
+  --sidebar-border: var(--dt-color-ink);
+  --sidebar-ring: var(--dt-color-pen);
+}
+
+:root {
+  /* Square corners everywhere. Round is only for dots and item balloons. */
+  --radius: 0px;
+
+  /* Archivo (variable width) for names and headings, Plex Sans for prose, Plex Mono for every label and number. */
+  --dt-font-display: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --dt-font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --dt-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Line weights, as on a drawing. */
+  --dt-border-hairline: 1px;
+  --dt-border-rule: 1.5px;
+  --dt-border-frame: 2px;
+  --dt-border-stamp: 3px;
+
+  /* Depth is a hard ink offset, never a blur. */
+  --dt-shadow-lift: 0 6px 0 -4px rgb(26 26 26 / 0.08);
+  --dt-shadow-float: 4px 4px 0
+    color-mix(in srgb, var(--dt-color-ink) 14%, transparent);
+  --dt-shadow-press: 4px 4px 0 var(--dt-color-ink);
+
+  --dt-ease-draft: cubic-bezier(0.45, 0, 0.2, 1);
+  --dt-ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dt-ease-snap: cubic-bezier(0.3, 1.6, 0.5, 1);
+
+  /* Graph paper ruling. */
+  --dt-grid-minor: 12px;
+  --dt-grid-major: 48px;
+}
